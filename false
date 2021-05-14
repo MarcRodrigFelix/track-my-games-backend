@@ -1,0 +1,7 @@
+      invoke  active_record
+      create    db/migrate/20210514200911_create_games.rb
+      create    app/models/game.rb
+      invoke  controller
+      create    app/controllers/games_controller.rb
+      invoke  resource_route
+       route    resources :games
