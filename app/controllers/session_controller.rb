@@ -22,4 +22,9 @@ class SessionController < ApplicationController
     end
   end
 
+  def destroy
+    session.clear
+    render json: { status: 200, logged_out: true }
+  end
+
 end

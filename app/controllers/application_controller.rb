@@ -20,4 +20,8 @@ class ApplicationController < ActionController::API
     @user == current_user
   end
 
+  def logout
+    session.clear
+  end
+
 end
