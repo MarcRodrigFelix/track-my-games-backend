@@ -14,6 +14,12 @@ class SessionController < ApplicationController
     end
   end
 
-
+  def is_logged_in?
+    if logged_in? && current_user
+      render json: { logged_in: true, user: current_user }
+    else
+      render json: { logged_in: false, message: 'no user, login or signup' }
+    end
+  end
 
 end
