@@ -25,12 +25,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.valid?
-      session[:user_id] = @user.id
-      render json: { user: @user }
+    @user = User.new(user_params)
+    if @user.save
+      login!
+      render json: { status: :created, user: @user }
     else
-      render json: { error: @user.errors.full_messages }
+      render json: { status: 500, error: @user.errors.full_messages }
     end
   end
 
