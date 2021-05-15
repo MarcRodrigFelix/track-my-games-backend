@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def login
+  def login!
     session[:user_id] = @user.id
   end
 
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
     @user == current_user
   end
 
-  def logout
+  def logout!
     session.clear
   end
 

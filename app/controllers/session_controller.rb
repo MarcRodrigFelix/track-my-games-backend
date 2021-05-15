@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     @user = User.find_by(email: session_params[:email])
     
     if @user && @user.authenticate(session_params[:password])
-      login
+      login!
       render json: { logged_in: true, user: @user }
     else
       render json: { status: 401, errors: ['no such user', 'double check your login info or sign up!'] }
@@ -23,7 +23,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
-    session.clear
+    logout!
     render json: { status: 200, logged_out: true }
   end
 
