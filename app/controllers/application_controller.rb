@@ -1,6 +1,6 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  helper_method :login, :logged_in?, :current_user, :authorized_user, :logout
+  helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
 
   def current_user
     if session[:user_id]
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
     !!current_user
   end
 
-  def authorized_user
+  def authorized_user?
     @user == current_user
   end
 
