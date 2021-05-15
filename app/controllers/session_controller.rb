@@ -4,6 +4,7 @@ class SessionController < ApplicationController
   end
 
   def create
+    
   end
-  
+
 end
