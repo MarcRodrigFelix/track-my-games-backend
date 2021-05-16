@@ -15,9 +15,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find( params[:id] )
+    games = @user.games.all
     if @user
       render json: {
-        user: @user
+        user: @user,
+        games: games
       }
     else
       render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!
-      render json: { status: :created, user: @user }
+      render json: { status: :created, user: @user, id: @user.id }
     else
       render json: { status: 500, error: @user.errors.full_messages }
     end
