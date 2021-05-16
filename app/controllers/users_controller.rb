@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     if @user
       render json: {
         user: @user,
-        games: games
+        games: games,
+        current_id: @user.id
       }
     else
       render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
