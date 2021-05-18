@@ -17,28 +17,18 @@ class UsersController < ApplicationController
     @user = User.find( params[:id] )
     games = @user.games.all
 
-    render json: { user: UserSerializer.new(@user).as_json }
-    # if @user
-    #   render json: {
-    #     user: @user,
-    #     games: games,
-    #     current_id: @user.id
-    #   }
-    # else
-    #   render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
-    # end
+    if @user 
+      render json: { user: UserSerializer.new(@user).as_json }
+    else
+      render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
+    end
+    
   end
 
   def create
     user = User.create(user_params)
-    render json: { user: UserSerializer.new(user), token: 'temporary_token_for_now' }
-    # render json: { status: :created, user: user, id: user.id }
-    # if @user.save
-    #   # login!
-    #   render json: { status: :created, user: @user, id: @user.id }
-    # else
-    #   render json: { status: 500, error: @user.errors.full_messages }
-    # end
+    token = encode_token(user.id)
+    render json: { user: UserSerializer.new(user), token: token }
   end
 
 
