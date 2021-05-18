@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def create
-byebug
     user = User.create(user_params)
     render json: { user: UserSerializer.new(user) }
     # render json: { status: :created, user: user, id: user.id }
