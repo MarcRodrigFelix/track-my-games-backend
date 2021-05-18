@@ -16,21 +16,24 @@ class UsersController < ApplicationController
   def show
     @user = User.find( params[:id] )
     games = @user.games.all
-    if @user
-      render json: {
-        user: @user,
-        games: games,
-        current_id: @user.id
-      }
-    else
-      render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
-    end
+
+    render json: { user: UserSerializer.new(@user).as_json }
+    # if @user
+    #   render json: {
+    #     user: @user,
+    #     games: games,
+    #     current_id: @user.id
+    #   }
+    # else
+    #   render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
+    # end
   end
 
   def create
 byebug
-    @user = User.create(user_params)
-    render json: { status: :created, user: @user, id: @user.id }
+    user = User.create(user_params)
+    render json: { user: UserSerializer.new(user) }
+    # render json: { status: :created, user: user, id: user.id }
     # if @user.save
     #   # login!
     #   render json: { status: :created, user: @user, id: @user.id }
