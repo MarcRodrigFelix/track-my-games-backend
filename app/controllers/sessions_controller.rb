@@ -1,35 +1,42 @@
 class SessionsController < ApplicationController
+
+  def login
+byebug
+  end
+
+  def auto_login
+  end
   
-    def create
-      @user = User.find_by(email: session_params[:email])
+    # def create
+    #   @user = User.find_by(email: session_params[:email])
       
-      if @user && @user.authenticate(session_params[:password])
-        login!
-        render json: { logged_in: true, user: @user, }
-      else
-        render json: { status: 401, errors: ['no such user', 'double check your login info or sign up!'] }
-      end
-    end
+    #   if @user && @user.authenticate(session_params[:password])
+    #     login!
+    #     render json: { logged_in: true, user: @user, }
+    #   else
+    #     render json: { status: 401, errors: ['no such user', 'double check your login info or sign up!'] }
+    #   end
+    # end
   
-    def is_logged_in?
-      if logged_in? && current_user
-        render json: { logged_in: true, user: current_user }
-      else
-        render json: { logged_in: false, message: 'no user, login or signup' }
-      end
-    end
+    # def is_logged_in?
+    #   if logged_in? && current_user
+    #     render json: { logged_in: true, user: current_user }
+    #   else
+    #     render json: { logged_in: false, message: 'no user, login or signup' }
+    #   end
+    # end
   
-    def destroy
-      logout!
-      render json: { status: 200, logged_out: true }
-    end
+    # def destroy
+    #   logout!
+    #   render json: { status: 200, logged_out: true }
+    # end
   
     
-    private
+    # private
   
-    def session_params
-      params.require(:user).permit(:username, :email, :password)
-    end
+    # def session_params
+    #   params.require(:user).permit(:username, :email, :password)
+    # end
 
 
 end
