@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
     JWT.decode(get_token, ENV['JWT_KEY'])[0]['user_id']
   end
 
-  def current_user
+  def logged_in_user
     User.find_by(id: decode_token)
   end
 

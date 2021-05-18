@@ -1,8 +1,6 @@
 class GamesController < ApplicationController
 
     def index
-        # @user = User.find_by( id: params[:user_id] )
-        # games = @user.games.all
         games = Game.all
         if games
             render json: games

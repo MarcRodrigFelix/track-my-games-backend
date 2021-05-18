@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def new
-    @user = User.new
-  end
-
   def index
     @users = User.all
     if @users
@@ -22,7 +18,6 @@ class UsersController < ApplicationController
     else
       render json: { status: 500, errors: ['Oops, user not found. Try again.'] }
     end
-    
   end
 
   def create
