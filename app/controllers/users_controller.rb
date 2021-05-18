@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    @user = User.new
+  end
 
   def index
     @users = User.all
@@ -28,13 +28,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      login!
-      render json: { status: :created, user: @user, id: @user.id }
-    else
-      render json: { status: 500, error: @user.errors.full_messages }
-    end
+byebug
+    @user = User.create(user_params)
+    render json: { status: :created, user: @user, id: @user.id }
+    # if @user.save
+    #   # login!
+    #   render json: { status: :created, user: @user, id: @user.id }
+    # else
+    #   render json: { status: 500, error: @user.errors.full_messages }
+    # end
   end
 
 

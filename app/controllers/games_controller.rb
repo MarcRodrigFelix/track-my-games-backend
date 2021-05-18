@@ -1,8 +1,12 @@
 class GamesController < ApplicationController
 
     def index
+        # @user = User.find_by( id: params[:user_id] )
+        # games = @user.games.all
         games = Game.all
-        render json: games
+        if games
+            render json: games
+        end
     end
 
     def show
@@ -23,7 +27,7 @@ class GamesController < ApplicationController
     private
 
     def game_params
-        params.require(:pokemon).permit(:title, :platform, :kind, :is_completed)
+        params.require(:game).permit(:title, :platform, :kind, :is_completed)
     end
 
 end
