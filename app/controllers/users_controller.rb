@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    render json: { user: UserSerializer.new(user) }
+    render json: { user: UserSerializer.new(user), token: 'temporary_token_for_now' }
     # render json: { status: :created, user: user, id: user.id }
     # if @user.save
     #   # login!
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.permit(:username, :email, :password, :password_confirmation)
+      params.permit(:username, :password)
     end
 
 end
