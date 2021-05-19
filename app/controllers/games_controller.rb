@@ -14,18 +14,22 @@ class GamesController < ApplicationController
         end
     end
 
+    # def create
+    #     game = Game.new(game_params)
+    #     if game.save
+    #         render json: game
+    #     end
+    # end
+
     def create
-        game = Game.new(game_params)
-        if game.save
-            render json: game
-        end
+       game = logged_in_user.games.create(game_params)
     end
 
 
     private
 
     def game_params
-        params.require(:game).permit(:title, :platform, :kind, :is_completed)
+        params.permit(:title, :platform, :kind)
     end
 
 end
