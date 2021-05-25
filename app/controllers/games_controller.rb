@@ -14,22 +14,19 @@ class GamesController < ApplicationController
         end
     end
 
-    # def create
-    #     game = Game.new(game_params)
-    #     if game.save
-    #         render json: game
-    #     end
-    # end
-
     def create
        game = logged_in_user.games.create(game_params)
+    end
+
+    def destroy
+        Game.destroy(params[:id])
     end
 
 
     private
 
     def game_params
-        params.permit(:title, :platform, :kind)
+        params.permit(:title, :platform, :kind, :user_id)
     end
 
 end
