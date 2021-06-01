@@ -1,6 +1,6 @@
 # Description
 
-Welcome To Track My Games Backend. This is a web app for gamers with more than a few games to keep track of that they are currently wanting to play. Just add the games your playing to your list and keep them until your finished. Then feel free to delete them or leave them as a record.
+Welcome To Track My Games Backend. This is a web app for gamers with more than a few games to keep track of that they are currently playing. Just add the games your playing to your list and keep them until your finished. Then feel free to delete them or leave them as a record.
 
 Download repo and try locally. Clone the repo and run 
 
