@@ -21,7 +21,7 @@ Download repo and try locally. Clone the repo and run
 
   Run local server (JSON data from Backend API)
   
-    $ make sure to run on localhost:3001
+    $ make sure to run on localhost:3000
     $ rails server
     $ rails s
 
